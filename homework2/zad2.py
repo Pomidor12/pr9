@@ -1,11 +1,26 @@
-a = float(input("Введите первое число: "))#.replace(',','.')
-b = float(input("Введите второе число: "))#.replace(',','.')
-#if a.isalpha()==True or b.isalpha()==True:
-#    print('ошибка!')
-#else:
-c = int(a) + (1 if a > int(a) else 0)
-d = int(b) + (1 if b > int(b) else 0)
-squares = []
-for i in range(c,d):
-    squares.append(i**2)
-print(f"Список квадратов целых чисел между {float(a)} и {float(b)}: {squares}")
+import os
+
+def get_squares(a, b):
+    
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise ValueError("Оба значения должны быть целыми числами.")
+    
+    start = min(a, b)
+    end = max(a, b)
+    
+
+    squares = [i**2 for i in range(start, end + 1)]
+    return squares
+
+try:
+    a = int(input("Введите первое целое число (a): "))
+    b = int(input("Введите второе целое число (b): "))
+    
+    
+    squares_list = get_squares(a, b)
+    
+    
+    print(f"Квадраты целых чисел между {a} и {b}: {squares_list}")
+
+except ValueError as e:
+    print(f"Ошибка ввода: {e}")
